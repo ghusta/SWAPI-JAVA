@@ -3,7 +3,7 @@ package com.swapi.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oleur on 22/12/2014.
@@ -30,8 +30,8 @@ public class Planet implements Serializable {
     public String surfaceWater;
 
     @SerializedName("residents")
-    public ArrayList<String> residentsUrls;
+    public List<String> residentsUrls;
 
     @SerializedName("films")
-    public ArrayList<String> filmsUrls;
+    public List<String> filmsUrls;
 }

@@ -1,7 +1,9 @@
 package com.swapi.sw;
 
 import com.swapi.APIConstants;
-import retrofit.RestAdapter;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Oleur on 22/12/2014.
@@ -9,27 +11,28 @@ import retrofit.RestAdapter;
  */
 public class StarWarsApi {
 
-    private StarWars mSwApi;
-    private static StarWarsApi sInstance;
+    private StarWars swService;
+    private static StarWarsApi instance;
 
     private StarWarsApi() {
-        final RestAdapter restAdapter = new RestAdapter.Builder()
-                .setClient(new StarWarsOkClient())
-                .setEndpoint(APIConstants.BASE_URL)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        mSwApi = restAdapter.create(StarWars.class);
-    }
+        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
 
-    public static void init() {
-        sInstance = new StarWarsApi();
+        // TODO: add header User-Agent
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIConstants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClientBuilder.build())
+                .build();
+
+        swService = retrofit.create(StarWars.class);
     }
 
     public static StarWars getApi() {
-        return sInstance.mSwApi;
+        if (instance == null) {
+            instance = new StarWarsApi();
+        }
+        return instance.swService;
     }
 
-    public void setApi(StarWars starWarsApi) {
-        sInstance.mSwApi = starWarsApi;
-    }
 }

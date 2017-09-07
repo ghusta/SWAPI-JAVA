@@ -3,7 +3,7 @@ package com.swapi.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oleur on 22/12/2014.
@@ -37,8 +37,8 @@ public class Vehicle implements Serializable {
     public String url;
 
     @SerializedName("pilots")
-    public ArrayList<String> pilotsUrls;
+    public List<String> pilotsUrls;
 
     @SerializedName("films")
-    public ArrayList<String> filmsUrls;
+    public List<String> filmsUrls;
 }

@@ -3,7 +3,7 @@ package com.swapi.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oleur on 21/12/2014.
@@ -16,7 +16,7 @@ public class People implements Serializable {
     public String birthYear;
 
     @SerializedName("films")
-    public ArrayList<String> filmsUrls;
+    public List<String> filmsUrls;
 
     public String gender;
 
@@ -36,12 +36,13 @@ public class People implements Serializable {
     public String created;
     public String edited;
     public String url;
+
     @SerializedName("species")
-    public ArrayList<String> speciesUrls;
+    public List<String> speciesUrls;
 
     @SerializedName("starships")
-    public ArrayList<String> starshipsUrls;
+    public List<String> starshipsUrls;
 
     @SerializedName("vehicles")
-    public ArrayList<String> vehiclesUrls;
+    public List<String> vehiclesUrls;
 }
