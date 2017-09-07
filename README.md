@@ -29,18 +29,7 @@ public static void main(String[] args)
     }
 ```
 
-## How to run sample app from updated build.gradle
+## How to run sample app
 ```
-gradle run
+mvn test
 ```
-
-Or if you want to run without gradle you could run
-
-```
-gradle assemble
-gradle copyDeps
-cd build
-java -cp "libs/*" Main
-```
-This later version puts an assembly of the Main application and all the dependencies into the build/libs directory for convenience. 
-
