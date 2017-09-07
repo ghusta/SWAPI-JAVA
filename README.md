@@ -1,6 +1,6 @@
 # SWAPI-Java REST Client
 
-The SWAPI (Star Wars API) for Java
+The [SWAPI (Star Wars API)](https://swapi.co/) client for Java
 
 ## How to use it
 
