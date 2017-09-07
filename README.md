@@ -1,9 +1,8 @@
-#SWAPI-Java API
-=================
+# SWAPI-Java REST Client
 
 The SWAPI (Star Wars API) for Java
 
-#How to use it
+## How to use it
 
 ```java
 public static void main(String[] args)
@@ -30,7 +29,7 @@ public static void main(String[] args)
     }
 ```
 
-# How to run sample app from updated build.gradle
+## How to run sample app from updated build.gradle
 ```
 gradle run
 ```
