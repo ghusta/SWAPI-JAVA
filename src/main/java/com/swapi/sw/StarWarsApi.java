@@ -1,5 +1,7 @@
 package com.swapi.sw;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.swapi.APIConstants;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -21,7 +23,7 @@ public class StarWarsApi {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIConstants.BASE_URL)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper().registerModule(new JodaModule())))
                 .client(httpClientBuilder.build())
                 .build();
 

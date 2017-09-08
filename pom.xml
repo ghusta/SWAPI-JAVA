@@ -16,10 +16,20 @@
 
         <retrofit.version>2.3.0</retrofit.version>
         <jackson.version>2.9.1</jackson.version>
+        <joda-time.version>2.9.9</joda-time.version>
     </properties>
 
     <dependencyManagement>
-
+        <dependencies>
+            <!-- Jackson BOM (https://github.com/FasterXML/jackson-bom) -->
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
     <dependencies>
 
@@ -38,7 +48,17 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+        </dependency>
+
+        <!-- DATE / TIME API -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
 
         <!-- LOGGING -->

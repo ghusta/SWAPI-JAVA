@@ -1,6 +1,8 @@
 package com.swapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,11 +24,11 @@ public class Film implements Serializable {
     public String director;
     public String producer;
     public String url;
-    public String created;
-    public String edited;
+    public DateTime created;
+    public DateTime edited;
 
     @JsonProperty("release_date")
-    public String releaseDate;
+    public LocalDate releaseDate;
 
     @JsonProperty("species")
     public List<String> speciesUrls;
