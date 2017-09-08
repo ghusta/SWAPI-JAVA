@@ -14,6 +14,8 @@ import retrofit2.Response;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class SimpleTest {
 
     private StarWars api;
@@ -31,7 +33,7 @@ public class SimpleTest {
         if (response.isSuccessful()) {
             SWModelList<Film> data = response.body();
             int count = data.count;
-            assertTrue(count > 0);
+            assertThat(count).isNotZero().isGreaterThan(0);
             for (Film film : data.results) {
                 System.out.println(String.format("Episode %d - Title: %-25s (%s)", film.episodeId, film.title, film.releaseDate));
             }
@@ -50,7 +52,7 @@ public class SimpleTest {
         if (response.isSuccessful()) {
             SWModelList<Planet> data = response.body();
             int count = data.count;
-            assertTrue(count > 0);
+            assertThat(count).isNotZero().isGreaterThan(0);
             for (Planet planet : data.results) {
                 System.out.println(String.format("Name: %-25s Climate: %-25s Pop: %16s", planet.name, planet.climate, planet.population));
             }
