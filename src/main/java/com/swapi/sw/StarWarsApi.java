@@ -30,9 +30,8 @@ public class StarWarsApi {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(5, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
+                .addInterceptor(new UserAgentInterceptor(APIConstants.USER_AGENT_NAME))
                 .addInterceptor(new RequestLoggingInterceptor());
-
-        // TODO: add header User-Agent
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIConstants.BASE_URL)
@@ -59,8 +58,26 @@ public class StarWarsApi {
             log.debug("HTTP Request : {}", request.toString());
             log.debug("HTTP Request headers : {}", request.headers().toString());
 
-            Response response = chain.proceed(request);
-            return response;
+            return chain.proceed(request);
+        }
+    }
+
+    private static class UserAgentInterceptor implements Interceptor
+    {
+        private final String userAgent;
+
+        public UserAgentInterceptor(String userAgent) {
+            this.userAgent = userAgent;
+        }
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            Request requestWithUserAgent = request.newBuilder()
+                    .header("User-Agent", userAgent)
+                    .build();
+
+            return chain.proceed(requestWithUserAgent);
         }
     }
 
