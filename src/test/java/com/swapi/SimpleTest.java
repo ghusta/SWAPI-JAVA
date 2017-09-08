@@ -3,6 +3,7 @@ package com.swapi;
 import com.swapi.models.Film;
 import com.swapi.models.Planet;
 import com.swapi.models.SWModelList;
+import com.swapi.models.Vehicle;
 import com.swapi.sw.StarWars;
 import com.swapi.sw.StarWarsApi;
 import org.junit.Before;
@@ -59,6 +60,26 @@ public class SimpleTest {
             assertThat(count).isNotZero().isGreaterThan(0);
             for (Planet planet : data.results) {
                 log.debug(String.format("Name: %-25s Climate: %-25s Pop: %16s", planet.name, planet.climate, planet.population));
+            }
+        }
+        else {
+            log.error(response.code() + " - " + response.message());
+            fail("Request failed");
+        }
+    }
+
+    @Test
+    public void getAllVehicles() throws Exception {
+        Call<SWModelList<Vehicle>> vehicles = api.getAllVehicles(null);
+
+        Response<SWModelList<Vehicle>> response = vehicles.execute();
+        if (response.isSuccessful()) {
+            SWModelList<Vehicle> data = response.body();
+            int count = data.count;
+            assertThat(count).isNotZero().isGreaterThan(0);
+            for (Vehicle vehicle : data.results) {
+                log.debug(String.format("Name: %-25s Model: %s by %s - Crew: %-3s",
+                        vehicle.name, vehicle.model, vehicle.manufacturer, vehicle.crew));
             }
         }
         else {

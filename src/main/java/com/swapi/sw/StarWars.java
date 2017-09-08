@@ -35,7 +35,7 @@ public interface StarWars {
     public Call<Starship> getStarship(@Path("id") int starshipId);
 
     @GET("vehicles/")
-    public Call<SWModelList<Vehicle>> getAllVehicles(@Query("page") int page);
+    public Call<SWModelList<Vehicle>> getAllVehicles(@Query("page") Integer page);
 
     @GET("vehicles/{id}/")
     public Call<Vehicle> getVehicle(@Path("id") int vehicleId);

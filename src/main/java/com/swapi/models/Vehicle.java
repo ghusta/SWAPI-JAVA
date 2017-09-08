@@ -1,6 +1,7 @@
 package com.swapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.util.List;
@@ -32,8 +33,8 @@ public class Vehicle implements Serializable {
     public String cargoCapacity;
 
     public String consumables;
-    public String created;
-    public String edited;
+    public DateTime created;
+    public DateTime edited;
     public String url;
 
     @JsonProperty("pilots")
