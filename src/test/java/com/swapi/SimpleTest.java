@@ -7,6 +7,8 @@ import com.swapi.sw.StarWars;
 import com.swapi.sw.StarWarsApi;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,6 +19,8 @@ import static org.junit.Assert.fail;
 import static org.assertj.core.api.Assertions.*;
 
 public class SimpleTest {
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private StarWars api;
 
@@ -35,11 +39,11 @@ public class SimpleTest {
             int count = data.count;
             assertThat(count).isNotZero().isGreaterThan(0);
             for (Film film : data.results) {
-                System.out.println(String.format("Episode %d - Title: %-25s (%s)", film.episodeId, film.title, film.releaseDate));
+                log.debug(String.format("Episode %d - Title: %-25s (%s)", film.episodeId, film.title, film.releaseDate));
             }
         }
         else {
-            System.err.println(response.code() + " - " + response.message());
+            log.error(response.code() + " - " + response.message());
             fail("Request failed");
         }
     }
@@ -54,11 +58,11 @@ public class SimpleTest {
             int count = data.count;
             assertThat(count).isNotZero().isGreaterThan(0);
             for (Planet planet : data.results) {
-                System.out.println(String.format("Name: %-25s Climate: %-25s Pop: %16s", planet.name, planet.climate, planet.population));
+                log.debug(String.format("Name: %-25s Climate: %-25s Pop: %16s", planet.name, planet.climate, planet.population));
             }
         }
         else {
-            System.err.println(response.code() + " - " + response.message());
+            log.error(response.code() + " - " + response.message());
             fail("Request failed");
         }
     }

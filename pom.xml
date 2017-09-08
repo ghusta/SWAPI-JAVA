@@ -41,6 +41,13 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <!-- LOGGING -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
         <!-- TESTS -->
         <dependency>
             <groupId>junit</groupId>
