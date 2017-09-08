@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,10 +13,10 @@ public class Film implements Serializable {
 
     public String title;
 
-    @SerializedName("episode_id")
+    @JsonProperty("episode_id")
     public int episodeId;
 
-    @SerializedName("opening_crawl")
+    @JsonProperty("opening_crawl")
     public String openingCrawl;
 
     public String director;
@@ -25,21 +25,21 @@ public class Film implements Serializable {
     public String created;
     public String edited;
 
-    @SerializedName("release_date")
+    @JsonProperty("release_date")
     public String releaseDate;
 
-    @SerializedName("species")
+    @JsonProperty("species")
     public List<String> speciesUrls;
 
-    @SerializedName("starships")
+    @JsonProperty("starships")
     public List<String> starshipsUrls;
 
-    @SerializedName("vehicles")
+    @JsonProperty("vehicles")
     public List<String> vehiclesUrls;
 
-    @SerializedName("planets")
+    @JsonProperty("planets")
     public List<String> planetsUrls;
 
-    @SerializedName("characters")
+    @JsonProperty("characters")
     public List<String> charactersUrls;
 }

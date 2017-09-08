@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -10,13 +10,13 @@ import java.io.Serializable;
  */
 public class Starship extends Vehicle implements Serializable {
 
-    @SerializedName("starship_class")
+    @JsonProperty("starship_class")
     public String starshipClass;
 
-    @SerializedName("hyperdrive_rating")
+    @JsonProperty("hyperdrive_rating")
     public String hyperdriveRating;
 
-    @SerializedName("MGLT")
+    @JsonProperty("MGLT")
     public String mglt;
 
 }

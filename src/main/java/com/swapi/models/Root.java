@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -9,16 +9,16 @@ import java.io.Serializable;
  * Root model that provides information on all avaiable resources within the API.
  */
 public class Root implements Serializable {
-    @SerializedName("films")
+    @JsonProperty("films")
     public String filmsUrl;
-    @SerializedName("people")
+    @JsonProperty("people")
     public String peopleUrl;
-    @SerializedName("planets")
+    @JsonProperty("planets")
     public String planetsUrl;
-    @SerializedName("species")
+    @JsonProperty("species")
     public String speciesUrl;
-    @SerializedName("starships")
+    @JsonProperty("starships")
     public String starshipsUrl;
-    @SerializedName("vehicles")
+    @JsonProperty("vehicles")
     public String vehiclesUrl;
 }

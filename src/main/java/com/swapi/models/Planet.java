@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,18 +20,18 @@ public class Planet implements Serializable {
     public String edited;
     public String url;
 
-    @SerializedName("rotation_period")
+    @JsonProperty("rotation_period")
     public String rotationPeriod;
 
-    @SerializedName("orbital_period")
+    @JsonProperty("orbital_period")
     public String orbitalPeriod;
 
-    @SerializedName("surface_water")
+    @JsonProperty("surface_water")
     public String surfaceWater;
 
-    @SerializedName("residents")
+    @JsonProperty("residents")
     public List<String> residentsUrls;
 
-    @SerializedName("films")
+    @JsonProperty("films")
     public List<String> filmsUrls;
 }

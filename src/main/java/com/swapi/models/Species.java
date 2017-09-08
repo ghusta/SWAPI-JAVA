@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,22 +14,22 @@ public class Species implements Serializable {
     public String classification;
     public String designation;
 
-    @SerializedName("average_height")
+    @JsonProperty("average_height")
     public String averageHeight;
 
-    @SerializedName("average_lifespan")
+    @JsonProperty("average_lifespan")
     public String averageLifespan;
 
-    @SerializedName("eye_colors")
+    @JsonProperty("eye_colors")
     public String eyeColors;
 
-    @SerializedName("hair_colors")
+    @JsonProperty("hair_colors")
     public String hairColors;
 
-    @SerializedName("skin_colors")
+    @JsonProperty("skin_colors")
     public String skinColors;
 
-    @SerializedName("homeworld")
+    @JsonProperty("homeworld")
     public String homeWorld;
 
     public String language;
@@ -37,9 +37,9 @@ public class Species implements Serializable {
     public String edited;
     public String url;
 
-    @SerializedName("people")
+    @JsonProperty("people")
     public List<String> peopleUrls;
 
-    @SerializedName("films")
+    @JsonProperty("films")
     public List<String> filmsUrls;
 }

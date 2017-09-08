@@ -1,6 +1,6 @@
 package com.swapi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,22 +13,22 @@ public class Vehicle implements Serializable {
     public String name;
     public String model;
 
-    @SerializedName("vehicle_class")
+    @JsonProperty("vehicle_class")
     public String vehicleClass;
 
     public String manufacturer;
 
-    @SerializedName("cost_in_credits")
+    @JsonProperty("cost_in_credits")
     public String costInCredits;
 
     public String length;
     public String crew;
     public String passengers;
 
-    @SerializedName("max_atmosphering_speed")
+    @JsonProperty("max_atmosphering_speed")
     public String maxAtmospheringSpeed;
 
-    @SerializedName("cargo_capacity")
+    @JsonProperty("cargo_capacity")
     public String cargoCapacity;
 
     public String consumables;
@@ -36,9 +36,9 @@ public class Vehicle implements Serializable {
     public String edited;
     public String url;
 
-    @SerializedName("pilots")
+    @JsonProperty("pilots")
     public List<String> pilotsUrls;
 
-    @SerializedName("films")
+    @JsonProperty("films")
     public List<String> filmsUrls;
 }

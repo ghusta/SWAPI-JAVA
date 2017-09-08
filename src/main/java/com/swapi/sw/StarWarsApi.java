@@ -3,7 +3,7 @@ package com.swapi.sw;
 import com.swapi.APIConstants;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Created by Oleur on 22/12/2014.
@@ -21,7 +21,7 @@ public class StarWarsApi {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIConstants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create())
                 .client(httpClientBuilder.build())
                 .build();
 
