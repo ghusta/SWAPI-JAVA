@@ -55,8 +55,8 @@ public class StarWarsApi {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            log.debug("HTTP Request : {}", request.toString());
-            log.debug("HTTP Request headers : {}", request.headers().toString());
+            log.debug("HTTP Request : {}", request);
+            log.debug("HTTP Request headers : {}", request.headers());
 
             return chain.proceed(request);
         }
