@@ -1,5 +1,7 @@
 # SWAPI-Java REST Client
 
+[![Build Status](https://travis-ci.org/ghusta/swapi-java-client.svg?branch=master)](https://travis-ci.org/ghusta/swapi-java-client)
+
 The [SWAPI (Star Wars API)](https://swapi.co/) client for Java
 
 ## How to run test
