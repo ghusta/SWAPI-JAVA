@@ -11,13 +11,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class SimpleTest {
 
@@ -26,7 +23,7 @@ public class SimpleTest {
     private StarWars api;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         api = StarWarsApi.getApi();
     }
 
