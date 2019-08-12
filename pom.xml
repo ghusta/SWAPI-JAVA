@@ -16,7 +16,6 @@
 
         <retrofit.version>2.6.1</retrofit.version>
         <jackson.version>2.9.9</jackson.version>
-        <joda-time.version>2.10.3</joda-time.version>
     </properties>
 
     <dependencyManagement>
@@ -53,14 +52,11 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-joda</artifactId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
         </dependency>
-
-        <!-- DATE / TIME API -->
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
 
         <!-- LOGGING -->

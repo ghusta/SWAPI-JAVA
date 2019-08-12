@@ -1,7 +1,8 @@
 package com.swapi.sw;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.swapi.APIConstants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -33,9 +34,13 @@ public class StarWarsApi {
                 .addInterceptor(new UserAgentInterceptor(APIConstants.USER_AGENT_NAME))
                 .addInterceptor(new RequestLoggingInterceptor());
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIConstants.BASE_URL)
-                .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper().registerModule(new JodaModule())))
+                .addConverterFactory(JacksonConverterFactory.create(objectMapper))
                 .client(httpClientBuilder.build())
                 .build();
 
@@ -49,8 +54,7 @@ public class StarWarsApi {
         return instance.swService;
     }
 
-    private static class RequestLoggingInterceptor implements Interceptor
-    {
+    private static class RequestLoggingInterceptor implements Interceptor {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
@@ -62,8 +66,7 @@ public class StarWarsApi {
         }
     }
 
-    private static class UserAgentInterceptor implements Interceptor
-    {
+    private static class UserAgentInterceptor implements Interceptor {
         private final String userAgent;
 
         public UserAgentInterceptor(String userAgent) {
