@@ -39,8 +39,7 @@ public class SimpleTest {
             for (Film film : data.results) {
                 log.debug(String.format("Episode %d - Title: %-25s (%s)", film.episodeId, film.title, film.releaseDate));
             }
-        }
-        else {
+        } else {
             log.error(response.code() + " - " + response.message());
             fail("Request failed");
         }
@@ -58,8 +57,7 @@ public class SimpleTest {
             for (Planet planet : data.results) {
                 log.debug(String.format("Name: %-25s Climate: %-25s Pop: %16s", planet.name, planet.climate, planet.population));
             }
-        }
-        else {
+        } else {
             log.error(response.code() + " - " + response.message());
             fail("Request failed");
         }
@@ -78,8 +76,28 @@ public class SimpleTest {
                 log.debug(String.format("Name: %-25s Model: %s by %s - Crew: %-3s",
                         vehicle.name, vehicle.model, vehicle.manufacturer, vehicle.crew));
             }
+        } else {
+            log.error(response.code() + " - " + response.message());
+            fail("Request failed");
         }
-        else {
+    }
+
+    @Test
+    public void getAllVehiclesPaginated() throws Exception {
+        int page = 2;
+        Call<SWModelList<Vehicle>> vehicles = api.getAllVehicles(page);
+
+        Response<SWModelList<Vehicle>> response = vehicles.execute();
+        if (response.isSuccessful()) {
+            SWModelList<Vehicle> data = response.body();
+            int count = data.count;
+            assertThat(count).isNotZero().isGreaterThan(0);
+            log.debug("Response : total = {}; page = {}; pageSize = {}", data.count, page, data.results.size());
+            for (Vehicle vehicle : data.results) {
+                log.debug(String.format("Name: %-25s Model: %s by %s - Crew: %-3s",
+                        vehicle.name, vehicle.model, vehicle.manufacturer, vehicle.crew));
+            }
+        } else {
             log.error(response.code() + " - " + response.message());
             fail("Request failed");
         }
