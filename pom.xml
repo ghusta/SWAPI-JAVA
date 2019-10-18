@@ -14,7 +14,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <retrofit.version>2.6.1</retrofit.version>
+        <retrofit.version>2.6.2</retrofit.version>
         <jackson.version>2.9.9</jackson.version>
         <joda-time.version>2.10.4</joda-time.version>
     </properties>
